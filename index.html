@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plotin — Steckbrief & Quiz</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#8b5cf6;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#071021 0%, #071833 60%);color:#e6eef8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .wrap{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 360px;gap:24px}
+    header{grid-column:1/-1;display:flex;align-items:center;gap:16px}
+    .hero{background:linear-gradient(180deg, rgba(139,92,246,0.12), rgba(139,92,246,0.03));padding:18px;border-radius:14px;box-shadow:0 6px 30px rgba(11,18,32,0.6);display:flex;align-items:center;gap:14px}
+    .badge{width:76px;height:76px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted)}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6);}
+    .profile{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .profile img{width:100%;border-radius:10px;object-fit:cover}
+    dl{margin:0}
+    dt{color:var(--muted);font-size:13px}
+    dd{margin:6px 0 14px 0;font-weight:600}
+    .quotes{font-style:italic;color:#cfe7ff;padding:10px;border-left:3px solid rgba(139,92,246,0.5);border-radius:6px}
+    .quiz{display:flex;flex-direction:column;gap:10px}
+    .question{padding:12px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.03)}
+    .answers{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+    button.opt{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:inherit;cursor:pointer;text-align:left}
+    button.opt.correct{outline:3px solid rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.2);}
+    button.opt.wrong{outline:3px solid rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.2);}
+    .side{position:sticky;top:24px}
+    .score{font-weight:800;font-size:18px}
+    .playful{display:flex;gap:8px;align-items:center}
+    .orb{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#051025}
+    .controls{display:flex;gap:8px;align-items:center}
+    .toggle{background:#071833;border-radius:999px;padding:6px;display:inline-flex;align-items:center;gap:8px}
+    .timeline{display:flex;flex-direction:column;gap:8px}
+    .flip{perspective:1000px}
+    .cardflip{width:100%;height:120px;transform-style:preserve-3d;transition:transform .6s}
+    .flip .front,.flip .back{position:relative;border-radius:10px;padding:12px;height:120px;backface-visibility:hidden}
+    .flip .back{position:absolute;top:0;left:0;transform:rotateY(180deg);}
+    .flip:hover .cardflip{transform:rotateY(180deg)}
+    footer{grid-column:1/-1;text-align:center;color:var(--muted);margin-top:8px}
+    @media (max-width:900px){.wrap{grid-template-columns:1fr}.side{position:relative;top:0}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="hero card" style="flex:1;display:flex;align-items:center;gap:14px">
+        <div class="badge">P</div>
+        <div>
+          <h1>Plotin — Steckbrief & spielerisches Lernen</h1>
+          <p class="lead">Ein kompakter Überblick über den Neuplatoniker Plotin (Enneaden) mit Quiz und Interaktionen.</p>
+        </div>
+        <div style="margin-left:auto;text-align:right">
+          <div class="playful">
+            <div class="orb">∞</div>
+            <div style="font-size:12px;color:var(--muted)">Entdecke: Das Eine — das Prinzip über allem</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Kurzsteckbrief</h2>
+        <div class="profile" style="margin-top:12px">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23070f1a'/><text x='50%' y='50%' font-size='48' fill='%238b5cf6' text-anchor='middle' dominant-baseline='middle'>Plotin</text></svg>" alt="Plotin">
+          <div>
+            <dl>
+              <dt>Geboren</dt><dd>ca. 204 n. Chr. (Lykien?)</dd>
+              <dt>Gestorben</dt><dd>270 n. Chr.</dd>
+              <dt>Bekannt für</dt><dd>Begründer des Neuplatonismus, <i>Enneaden</i></dd>
+              <dt>Kernaussagen</dt><dd>Das Eine übersteigt Sein und Denken; die Seele verbindet Einem und Kosmos</dd>
+            </dl>
+            <div style="margin-top:8px" class="quotes">
+              <strong>Zitate:</strong>
+              <p style="margin:6px 0">„Jenseits des Intellekts ist das Eine.“ — Plotin (Enneaden)</p>
+              <p style="margin:6px 0">„Die Seele ist Mittlerin zwischen dem Einen und der Vielheit.“ — sinngemäß nach Plotin</p>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border:none;height:12px">
+
+        <h3>Interaktives Lernfeld</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
+          <div class="cardflip flip" style="flex:1;min-width:220px">
+            <div class="card cardflip" style="height:120px;">
+              <div class="front card" style="height:120px;">
+                <h4>Enneaden</h4>
+                <p class="lead" style="color:var(--muted)">Sammlung von Schriften über Metaphysik, Seele und Ethik.</p>
+              </div>
+              <div class="back card" style="height:120px;">
+                <h4>Warum wichtig?</h4>
+                <p style="color:var(--muted)">Plotins System prägte Mittelalter und Renaissance — Einfluss auf christliche Mystik und spätere Philosophen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card cardflip" style="flex:1;min-width:220px;height:120px">
+            <div class="front card" style="height:120px">
+              <h4>Die drei Prinzipien</h4>
+              <p class="lead" style="color:var(--muted)">Das Eine → der Intellekt (Nous) → die Weltseele</p>
+            </div>
+            <div class="back card" style="height:120px">
+              <h4>Merksatz</h4>
+              <p style="color:var(--muted)">Vom Einen strömt Abfolge: Intellekt → Seele → sichtbare Welt.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="timeline">
+          <h4>Mini-Timeline</h4>
+          <div class="card" style="display:flex;gap:10px;align-items:center">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></div>
+            <div><strong>204</strong> Geburt (ungefähr)</div>
+          </div>
+          <div class="card" style="display:flex;gap:10px;align-items:center">
+            <div style="width:8px;height:8px;border-radius:50%;background:#60a5fa"></div>
+            <div><strong>ca. 250</strong> Lehre in Rom; Schüler Porphyrios sammelt seine Schriften</div>
+          </div>
+          <div class="card" style="display:flex;gap:10px;align-items:center">
+            <div style="width:8px;height:8px;border-radius:50%;background:#34d399"></div>
+            <div><strong>270</strong> Tod und spätere Herausgabe der <i>Enneaden</i></div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="card" style="margin-top:12px">
+        <h3>Vertiefung — Kurz erklärt</h3>
+        <p style="color:var(--muted)">Plotin baut auf Platon auf, erweitert aber mit dem zentralen Einheitsbegriff: Das Eine ist nicht sichtbar, es ist die Quelle aller Dinge. Darauf folgen Nous (Intellekt) und die Weltseele als Stufen der Realität.</p>
+      </section>
+
+    </main>
+
+    <aside class="side">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:12px;color:var(--muted)">Quiz</div>
+            <div class="score" id="score">Punkte: 0 / 3</div>
+          </div>
+          <div class="controls">
+            <div class="toggle">Mini-Quiz</div>
+          </div>
+        </div>
+        <div style="margin-top:10px" class="quiz" id="quiz">
+          <!-- Question templates inserted by JS -->
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px">
+          <button id="reset" style="flex:1;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer">Neu starten</button>
+          <button id="hint" style="padding:8px;border-radius:8px;background:var(--accent);border:none;color:#021124;cursor:pointer">Tipp</button>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="card">
+        <h4>Fun-Widget</h4>
+        <p style="color:var(--muted);margin-bottom:8px">Klicke auf das Symbol, um eine zufällige Denkaufgabe zu bekommen.</p>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button id="rand" style="width:56px;height:56px;border-radius:12px;border:none;background:linear-gradient(135deg,#06b6d4,#7c3aed);cursor:pointer;font-weight:700">?</button>
+          <div id="randtext" style="color:var(--muted)">Bereit?</div>
+        </div>
+      </div>
+    </aside>
+
+
+  <script>
+    const questions = [
+      {q:"Welches Prinzip steht bei Plotin an erster Stelle?", opts:["Die Weltseele","Das Eine","Der Intellekt (Nous)"], a:1},
+      {q:"Wer sammelte und ordnete Plotins Schriften?", opts:["Aristoteles","Porphyrios","Platon"], a:1},
+      {q:"Welche Reihenfolge beschreibt Plotins Stufen der Wirklichkeit (oberste zuerst)?", opts:["Nous → Das Eine → Weltseele","Das Eine → Nous → Weltseele","Weltseele → Nous → Das Eine"], a:1}
+    ];
+
+    let score=0; let answered=0;
+    const quizEl=document.getElementById('quiz');
+    const scoreEl=document.getElementById('score');
+
+    function renderQuiz(){
+      quizEl.innerHTML='';
+      questions.forEach((item, idx)=>{
+        const qDiv=document.createElement('div'); qDiv.className='question';
+        qDiv.innerHTML=`<div style="font-weight:700">${idx+1}. ${item.q}</div>`;
+        const ans=document.createElement('div'); ans.className='answers';
+        item.opts.forEach((opt,i)=>{
+          const btn=document.createElement('button'); btn.className='opt'; btn.textContent=opt; btn.onclick=()=>choose(idx,i,btn);
+          ans.appendChild(btn);
+        });
+        qDiv.appendChild(ans);
+        quizEl.appendChild(qDiv);
+      });
+    }
+
+    function choose(qi, oi, btn){
+      const parent=btn.parentElement; if(parent.dataset.done) return; parent.dataset.done='1';
+      const correct = questions[qi].a;
+      Array.from(parent.children).forEach((b, i)=>{
+        b.disabled=true;
+        if(i===correct) b.classList.add('correct');
+        if(i===oi && i!==correct) b.classList.add('wrong');
+      });
+      if(oi===correct){ score++; }
+      answered++; scoreEl.textContent=`Punkte: ${score} / ${questions.length}`;
+      if(answered===questions.length){ showFinal(); }
+    }
+
+    function showFinal(){
+      const final=document.createElement('div'); final.className='card'; final.style.marginTop='10px';
+      final.innerHTML=`<strong>Ergebnis:</strong> Du hast ${score} von ${questions.length} Punkten. ${score===questions.length? 'Sehr gut!':'Gut gemacht — nochmal üben hilft.'}`;
+      quizEl.appendChild(final);
+    }
+
+    document.getElementById('reset').onclick=()=>{score=0;answered=0;scoreEl.textContent=`Punkte: 0 / ${questions.length}`;renderQuiz();};
+    document.getElementById('hint').onclick=()=>{alert('Tipp: Plotins Hauptbegriff ist das transzendente "Eine" — alle Dinge fließen von dort.');};
+    document.getElementById('rand').onclick=()=>{const tasks=['Denke 2 Minuten an etwas Universelles (kein konkretes Objekt).','Versuche die drei Stufen: Eine → Nous → Weltseele in eigenen Worten zu erklären.','Formuliere mit einem Satz, warum das Eine nicht gleich "ein Ding" ist.'];const t=tasks[Math.floor(Math.random()*tasks.length)];document.getElementById('randtext').textContent=t;};
+
+    // initial render
+    renderQuiz();
+
+  </script>
+</body>
+</html>
